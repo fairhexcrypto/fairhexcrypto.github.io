@@ -100,7 +100,6 @@ body{
   box-shadow: 0 0 5px 5px lightslategray;
 }
 
-
 .big_button{
   position: relative;
   left: -5px;
@@ -144,6 +143,30 @@ body{
   font-size: 20px;
   width: 130px;
   height: 70px;
+  background: url("https://i.imgur.com/E0nfmkN.png") no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border none;
+  text-align: center;
+  filter: hue-rotate(-223deg);
+}
+
+.very_small_button{
+  font-size: 20px;
+  color: #fff;
+  width: 100px;
+  height: 53.8461538462px;
+  background: url("https://i.imgur.com/zGuT7gi.png") no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border: 0px solid #777374;
+  text-align: center;
+}
+
+.very_small_button:hover:enabled {
+  font-size: 20px;
+  width: 100px;
+  height: 53.8461538462px;
   background: url("https://i.imgur.com/E0nfmkN.png") no-repeat;
   background-size: cover;
   cursor: pointer;
@@ -458,4 +481,37 @@ button[disabled] {
     width: 175px;
     height: 197px;
   }
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: cornflowerblue;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: cornflowerblue;
+  cursor: pointer;
 }
