@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>FairHEX</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://i.imgur.com/AaQKALB.png" rel="icon" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|NTR&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css" integrity="sha384-Bho7DVdu9SrApy14A4WS9DCKKdwI9pq83E9pY4SrU+20fU9kQCbgk+UytSXBNlzr" crossorigin="anonymous">
+	<link href="../css/main.css?42" rel="stylesheet">
+</head>
+<body style="background:darkslateblue">
+<div class="container-fluid" style="max-width:1920px">
+	<nav class="navbar navbar-expand-xl navbar-dark px-0 pb-sm-0 mb-2 mb-sm-5">
+		<a class="navbar-brand position-relative" href="#"><img src="https://i.imgur.com/AaQKALB.png" style="height:70px"/></a><span class="title text-white">FairHEX</span>
+		<button class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">INFO <span class="caret"></span></a>
+				    <div class="dropdown-menu dropdown-menu-right">
+				        <div class="dropdown dropright">
+				            <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">PULSECHAIN</a>
+				            <div class="dropdown-menu" style="top:-9px;">
+				            	<div class="dropdown dropright">
+				            		<a class="dropdown-item" href="https://dexscreener.com/pulsechain/0xaf629dae5e482378771ccb4225118b01d597321d" target="_blank">CHART</a>
+				                </div>
+				            </div>
+				        </div>
+				        <div class="dropdown dropright">
+				            <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">ETHEREUM</a>
+				            <div class="dropdown-menu" style="top:-9px;">
+				            	<div class="dropdown dropright">
+				            		<a class="dropdown-item" href="https://dexscreener.com/ethereum/0xaf629dae5e482378771ccb4225118b01d597321d" target="_blank">CHART</a>
+				                    <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">DEX</a>
+				                    <div class="dropdown-menu" style="top:-9px;">
+										<a class="dropdown-item" href="https://app.1inch.io/#/1/simple/swap/0xed390c5f9df0d65eb7033e59dc1b0944233c2a20/HEX/import-token" target="_blank">1INCH</a>
+										<a class="dropdown-item" href="https://app.uniswap.org/#/swap?exactField=input&exactAmount=1&inputCurrency=0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39&outputCurrency=0xeD390C5F9dF0d65EB7033e59dc1B0944233c2a20" target="_blank">UNISWAP</a>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				        <a class="dropdown-item" href="https://www.scribd.com/document/611965568/White-Paper-V-I#fullscreen=1" target="_blank">WHITEPAPER</a>
+						<a class="dropdown-item" href="main.html" target="_blank">MAIN VERSION</a>
+				    </div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SOCIALS <span class="caret"></span></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="https://t.me/fairhexcrypto" target="_blank">TELEGRAM</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="row mb-2 mb-sm-5">
+		<div class="col-md-6 text-left">
+			<p>Wallet: <span class="notranslate" translate="no" id="wallet">Please log into Metamask!</span> &nbsp;&nbsp;&nbsp;Balance: <span id="balanceHEX">0</span> HEX</p>
+		</div>
+		<div class="col-md-6 text-right" id="ethWallet">
+			<p>Network: <span id="network">Detecting...</span></p>
+		</div>
+	</div>
+	<div class="row accord no-gutters mb-5">
+		<div class="col-6 col-md-4 col-lg-3 text-center">
+			<img src="https://cdn-icons-png.flaticon.com/512/3967/3967771.png" height="70">
+			<p class="icon_title mb-2">APR & Bonus %</p>
+			<span class="icon_number notranslate" translate="no" id="currentAPR"><i class="fas fa-spinner fa-spin"></i></span>
+			<p translate="no" class="small text-muted notranslate">Percentage</p>
+		</div>
+		<div class="col-6 col-md-4 col-lg-3 text-center">
+			<img src="https://cdn-icons-png.flaticon.com/512/2272/2272166.png" height="70"/>
+			<p class="icon_title mb-2">Bonus Pool</p>
+			<span class="icon_number notranslate" translate="no" id="fairHexPoolAmount"><i class="fas fa-spinner fa-spin"></i></span>
+			<p translate="no" class="small text-muted notranslate">FairHEX</p>
+		</div>
+		<div class="col-6 col-md-4 col-lg-3 text-center">
+			<img src="https://cdn-icons-png.flaticon.com/512/2338/2338501.png" height="70"/>
+			<p class="icon_title mb-2">Stake Balance</p>
+			<span class="icon_number notranslate" translate="no" id="stakeBalance"><i class="fas fa-spinner fa-spin"></i></span>
+			<p translate="no" class="small text-muted notranslate">HEX</p>
+		</div>
+		<div class="col-6 col-md-4 col-lg-3 text-center">
+			<img src="https://cdn-icons-png.flaticon.com/512/1504/1504044.png" height="70"/>
+			<p class="icon_title mb-2">Total Minted</p>
+			<span class="icon_number notranslate" translate="no" id="totalMinted"><i class="fas fa-spinner fa-spin"></i></span>
+			<p translate="no" class="small text-muted notranslate">FairHEX</p>
+		</div>
+	</div>
+	<div class="text-center mb-4">
+		<h1 class="title">STAKING</h1>
+	</div>
+	<div class="row accord no-gutters mb-5">
+		<div class="col-12">
+			<div class="card pl-3">
+				<div class="row no-gutters">
+					<div class="col-lg-3 my-3 pr-3">
+						<input class="form-control" id="stakeInput" type="number" min="1" placeholder="Enter HEX amount" onkeyup="calculateStakeStartBonusHearts();" onChange="calculateStakeStartBonusHearts();">
+					</div>
+					<div class="col-lg-3 my-3 pr-3">
+						<!-- <input class="form-control" id="dayInput" type="number" min="1" max="5555" placeholder="Enter days (max 5,555)" onkeyup="calculateStakeStartBonusHearts();" onChange="calculateStakeStartBonusHearts();"> -->
+						<select id="dayInput" class="form-control" style="padding-top:0;padding-bottom:0" onchange="calculateStakeStartBonusHearts();">
+							<option selected="" disabled="" value="">Days</option>
+						  	<option value="7">7</option>
+						  	<option value="15">15</option>
+						  	<option value="30">30</option>
+						</select>
+					</div>
+					<div class="col-lg-3 my-3 pr-3">
+						<input class="form-control" id="effectiveAmount" placeholder="Additional Info" disabled>
+					</div>
+					<div class="col-lg-3 my-1 text-lg-right text-center">
+						<button id="approveTokens" class="small_button" style="display:none">Approve</button>
+						<button id="stakeTokens" class="small_button" style="display:none">Stake</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="text-center">
+		<h2 class="title" style="font-size:22px">ACTIVE STAKES</h2>
+	</div>
+	<div class="accord mb-5">
+		<div class="card mb-2">
+			<div class="px-3 text-center">Notice : Increase slippage if you have issues unstaking</div>
+		</div>
+		<table id="stakeActiveTable" class="dash-table" data-toggle="table" data-unique-id="id" data-pagination="true" data-page-size="5" data-pagination-h-align="left" data-pagination-detail-h-align="right" style="border-top-style:hidden;">
+			<thead>
+				<tr>
+					<th class="d-none" data-field="id"></th>
+					<th data-field="start" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Start</th>
+					<th data-field="end" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;End</th>
+					<th data-field="progress" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Progress</th>
+					<th data-field="principal" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Principal</th>
+					<th data-field="shares" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Shares</th>
+					<th data-field="bonus" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Bonus</th>
+					<th data-field="interest" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;HEX Yield</th>
+					<th class="d-none" data-field="currentvalue" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Current Value</th>
+					<th data-field="button" data-cell-style="cellStyle"></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center mb-5">
+			<h1 class="title">MISCELLANEOUS</h1>
+	</div>
+	<div class="row accord no-gutters mb-5">
+		<div class="col-12 col-md-4 text-center mb-2">
+			<button id="addToMetaMask" class="btn btn-warning btn-lg btn-block">Add FairHEX to MetaMask</button>
+		</div>
+		<div class="col-12 col-md-4 text-center mb-2">
+			<button id="toggleHedron" class="btn btn-primary btn-lg btn-block"><i class="fas fa-spinner fa-spin"></i></button>
+		</div>
+		<div class="col-12 col-md-4 text-center mb-2">
+			<button id="slippageProtection"  class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#swapSlippageModal">
+				Slippage Protection
+			</button>
+		</div>
+	</div>
+	<div id="faq">
+		<div class="text-center mb-4">
+				<h1 class="title">FAQ</h1>
+		</div>
+		<div class="accord mb-5" id="accordion">
+			<div class="card mb-1">
+				<div class="card-header" id="headingOne">
+					<h5 class="mb-0">
+						<a class="text-white collapsed" data-toggle="collapse" href="#collapseOne">
+							How to use this platform?
+						</a>
+					</h5>
+				</div>
+				<div id="collapseOne" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+					To use this platform on PC,
+				    <a class="text-white" style="text-decoration: underline;" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" target="_blank">Metamask</a>
+				    extension must be installed on your Google Chrome browser.
+		            If you are using smartphone <a class="text-white" style="text-decoration: underline;" href="https://play.google.com/store/apps/details?id=io.metamask&hl=en" target="_blank">Metamask[Android]</a>
+		            or <a class="text-white" style="text-decoration: underline;" href="https://apps.apple.com/us/app/metamask-blockchain-wallet/id1438144202" target="_blank">Metamask[IOS]</a> is suitable.
+		            Put some HEX in your wallet and begin!<br>
+		            <b>Tip:</b> <br>
+		            When interacting with smart contracts, it's always better to have some ETH or PULSE for gas. The gas will be consumed
+		            when triggering smart contract's functions
+					</div>
+				</div>
+			</div>
+			<div class="card mb-1">
+				<div class="card-header" id="headingTwo">
+					<h5 class="mb-0">
+						<a class="text-white collapsed" data-toggle="collapse" href="#collapseTwo">
+							How does the game work?
+						</a>
+					</h5>
+				</div>
+				<div id="collapseTwo" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						FairHEX is a token built on top of HEX (total supply: 21 million)<br>
+						FairHEX rewards holders with HEX while punishing traders by inccuring a 5% fee on buy or sell via the main pool (Uniswap V2 FairHEX/HEX pool)<br>
+						You stake HEX for 7/15/30 days to claim free FairHEX. After 5 million tokens has been minted, the minting phase ends and staking phase begins<br>
+						Your HEX principal is left untouched (only bound by the rules of official HEX staking) and serves as proof of participation<br>
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/n0phjdT8ANI" allowfullscreen=""></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mb-1">
+				<div class="card-header" id="headingThree">
+					<h5 class="mb-0">
+						<a class="text-white collapsed" data-toggle="collapse" href="#collapseThree">
+							How does the staking work?
+						</a>
+					</h5>
+				</div>
+				<div id="collapseThree" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						You stake HEX to earn FairHEX<br>
+						Staking Power (also known as Effective HEX) determines how many shares you get for your hex stake<br>
+						When you stake your HEX token, you are staking to the original HEX contract endorsed by Richard Heart<br>
+						When you unstake, you are bound by the rules set in the original HEX contract (penalties or rewards)<br>
+						When you unstake, only profitable stakes are subjected to conversion (principal in HEX, yield in FairHEX)<br>
+						When you unstake, only profitable stakes are rewarded a bonus (based on the yield) from the bonus pool<br>
+						Ending a pending stake is subjected to a 1% fee on principal (to prevent stake balance manipulation)<br>
+						You are not subjected to any fees when you stake or unstake (ongoing or completed or late stake)<br>
+					</div>
+				</div>
+			</div>
+			<div class="card mb-1">
+				<div class="card-header" id="headingFour">
+					<h5 class="mb-0">
+						<a class="text-white collapsed" data-toggle="collapse" href="#collapseFour">
+							How is the bonus calculated?
+						</a>
+					</h5>
+				</div>
+				<div id="collapseFour" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						When you unstake, only profitable stakes are rewarded a bonus (based on the yield) from the bonus pool<br>
+						Bonus percentage is dependent on the total stake balance<br>
+						Bonus APY is the additional APY excluding HEX APY<br>
+						<table id="bonusTable" class="dash-table w-auto" data-toggle="table" data-unique-id="id" data-pagination="true" data-page-size="8" data-pagination-h-align="left" data-pagination-detail-h-align="right" style="border-top-style:hidden;">
+							<thead>
+								<tr>
+									<th data-field="bonusPercentage" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Bonus Percentage</th>
+									<th data-field="additionalAPY" data-sortable="true" data-sorter="numberSorter">&nbsp;&nbsp;Bonus APY</th>
+									<th data-field="stakeBalance">Stake Balance</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="card mb-1">
+				<div class="card-header" id="headingSix">
+					<h5 class="mb-0">
+						<a class="text-white collapsed" data-toggle="collapse" href="#collapseSix">
+							What is the token distribution?
+						</a>
+					</h5>
+				</div>
+				<div id="collapseSix" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						21 million FairHEX tokens broken down as followed :<br>
+						- 94% to staking contract<br>
+						- 6% to airdrop<br>
+
+						Minting phase runs up to 5 million total tokens minted<br>
+						- Formula to calculate yield<br>
+						&nbsp;&nbsp;For 7 days, (principal / 514 + FairHEX yield + FairHEX bonus + Hedron)<br>
+						&nbsp;&nbsp;For 15 days, (principal / 240 + FairHEX yield + FairHEX bonus + Hedron)<br>
+						&nbsp;&nbsp;For 30 days, (principal / 120 + FairHEX yield + FairHEX bonus + Hedron)<br>
+
+						Staking phase runs from 5 million total tokens minted & onwards<br>
+						- Formula to calculate yield = (FairHEX yield + FairHEX bonus + Hedron)<br>
+					</div>
+				</div>
+			</div>
+			<div class="card mb-1">
+				<div class="card-header" id="headingFive">
+					<h5 class="mb-0">
+						<a class="text-white collapsed" data-toggle="collapse" href="#collapseFive">
+							What is the contract address?
+						</a>
+					</h5>
+				</div>
+				<div id="collapseFive" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						PulseChain<br>
+						- <a class="text-white" style="text-decoration: underline;" href="https://scan.pulsechain.com/address/0xeD390C5F9dF0d65EB7033e59dc1B0944233c2a20" target="_blank">FairHEX Token</a><br>
+						- <a class="text-white" style="text-decoration: underline;" href="https://scan.pulsechain.com/address/0xFF448ed634D404D2B351C3427113Ef6865Aea029" target="_blank">FairHEX Staking</a><br>
+						Ethereum<br>
+						- <a class="text-white" style="text-decoration: underline;" href="https://etherscan.io/token/0xed390c5f9df0d65eb7033e59dc1b0944233c2a20" target="_blank">FairHEX Token</a><br>
+						- <a class="text-white" style="text-decoration: underline;" href="https://etherscan.io/address/0xff448ed634d404d2b351c3427113ef6865aea029" target="_blank">FairHEX Staking</a><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="row no-gutters" id="footer_row">
+			<div class="col-6 text-left">
+				<span>2025 © FairHEX</span>
+			</div>
+			<div class="col-6 text-right">
+				<span class="social-link">
+					<a href="https://t.me/fairhexcrypto" target="_blank"><i class="fab fa-telegram"></i></a>
+				</span>
+			</div>
+			<div class="col-12 small text-justify text-muted" style="line-height:1.5;">This application is beta software and is highly experimental. To the greatest extent possible FairHEX has been implemented to be accessible directly on-chain without a user interface. This website and associated APIs have been provided for convenience.
+
+Ultimately you are interacting with no other party other than the blockchain itself and are 100% responsible for your transactions. Please do your own research before interacting with any contract or asset on the blockchain. FairHEX is a decentralized autonomous organization and is never liable for losses that happen using this user interface or its smart contracts.</div>
+		</div>
+	</div>
+</div>
+<section class="text-center Tokenomics3">
+	<div class=" tokenomicsContent3">
+		<div class="text-center tokenImgleft3">
+			<div class="tokenImgcontent3"></div>
+		</div>
+		<div class="text-center tokenImgleft4">
+			<div class="tokenImgcontent4"></div>
+		</div>
+	</div>
+</section>
+<div class="modal fade" id="endStakeModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content" style="background-color: #232027">
+			<div class="modal-header">
+				<h2 class="modal-title" id="endStakeModalLabel">Confirm End Stake</h2>
+				<button id="endStakeSecClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" style="color:white;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<span id="stakeEndMessage" class="lead"></span><br>
+			</div>
+			<div class="modal-footer p-0">
+				<button id="endStakeMainClose" type="button" class="button" data-dismiss="modal">Close</button>
+				<button id="endStakeConfirm" type="button" class="button">End Stake</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="startStakeModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content" style="background-color: #232027">
+			<div class="modal-header">
+				<h2 class="modal-title" id="startStakeModalLabel">Confirm Start Stake</h2>
+				<button id="startStakeSecClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" style="color:white;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<span class="lead">
+					<span id="stakeStartMessage" class="lead"></span><br>
+				</span>
+			</div>
+			<div class="modal-footer p-0">
+				<button id="startStakeMainClose" type="button" class="button" data-dismiss="modal">Close</button>
+				<button id="startStakeConfirm" type="button" class="button">Stake</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="swapSlippageModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content" style="background-color: #232027">
+			<div class="modal-header">
+				<h2 class="modal-title">Swap Slippage</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" style="color:white;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="input-group mb-3">
+					<input class="form-control" id="swapSlippagePercentage" type="number" min="0.5" step="0.5" value="5.3">
+					<div class="input-group-append">
+						<span class="input-group-text">%</span>
+					</div>
+				</div>
+				<div>Tip : Increase your slippage incrementally (increments of 0.5 or 1) until you are able to buy or sell your FairHEX tokens. Keep slippage as low as possible to prevent front running</div>
+			</div>
+			<div class="modal-footer p-0">
+				<button type="button" class="button" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.8.1/dist/web3.min.js" integrity="sha256-cdcyjItaOZqsMpqD2GtRBYwB4OBBT8RXfav8ecUYxtg=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js" integrity="sha384-kAbV+S9m0faTaFLnoAFNv3GYgGMyR38fsW/v929VLIiw7VgFvEC//WVxM4krTrVW" crossorigin="anonymous"></script>
+<script src="../js/fairhexlite.js?6"></script>
+<script src="../js/dropdown.js?2"></script>
+</body>
+</html>
